@@ -65,3 +65,8 @@ button{
     flex-direction: row;
 }
 
+section{
+    color: white;
+    margin-top: 3rem;
+    font-size: 2rem;
+}

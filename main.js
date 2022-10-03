@@ -12,16 +12,16 @@ const solicitarNum = (alert) => {
 const adicionArtefacto = (numArtefacto) => {
   // A partir del código devuelve un string con el registro CSV
   const nomArtefacto = prompt("Ingrese el nombre del artefacto");
-  const consumoArtefacto = prompt("Ingrese el consumo del artefacto");
+  const consumoArtefacto = prompt("Ingrese el consumo del artefacto en kwh/hora");
   return numArtefacto + "," + nomArtefacto + "," + consumoArtefacto;
 };
 
 while (numArtefacto !== 0) {
+  // Pregunta artefacto por artefacto hasta salir
   numArtefacto = solicitarNum("Ingrese número de artefacto. 0 para salir");
   if (numArtefacto !== 0) {
     registroArtefacto = adicionArtefacto(numArtefacto);
   }
 }
-console.log(registroArtefacto);
 
 if (registroArtefacto !== "") alert("El último ingresado fue " + registroArtefacto);
