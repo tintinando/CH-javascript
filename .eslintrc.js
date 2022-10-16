@@ -1,22 +1,19 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
+  "env": {
+    "browser": true,
+    "es2021": true
   },
-  extends: [
-    'plugin:react/recommended',
-    // 'airbnb',
+  "extends": "eslint:recommended",
+  "overrides": [
   ],
-  overrides: [
-  ],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  plugins: [
-    'react',
-  ],
-  rules: {
-    semi: [2, 'always'],
-  },
+  "rules": {
+    "semi": ["error", "always", { "omitLastInOneLineBlock": false }],
+    "semi-style": ["error", "last"],
+    "no-extra-semi": ["error"],
+    "semi-spacing": ["error", { "before": false, "after": true }]
+  }
 };
