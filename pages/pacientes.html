@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/124b2a5362.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../calendar.css">
+  <title>Sistema de turnos | Pacientes</title>
+</head>
+
+<body>
+  <header></header>
+  <h1>Turnos para pacientes</h1>
+  <form id="formPacientes">
+    <select id="selectPaciente">
+      <option value="" disabled selected hidden>Paciente</option>
+    </select>
+    <select id="selectEspecialidad">
+      <option value="" disabled selected hidden>Especialidad</option>
+    </select>
+    <select id="selectProfesional">
+      <option value="" disabled selected hidden>Profesional</option>
+    </select>
+  </form>
+
+  <div class="pacientes--turnos" id="pacientes--turnos"></div>
+  <div class="calendar--container" id="calendar--container">
+  </div>
+
+  <script src="../header.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
+  <script src="../DB.js"></script>
+  <script src="../calendario.js"></script>
+  <script src="../pacientes.js"></script>
+</body>
+
+</html>

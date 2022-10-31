@@ -5,24 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/124b2a5362.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../style.css">
-    <script src="../main.js" defer></script>
     <title>Administrador de turnos</title>
 </head>
 
 <body>
+  <header></header>
     <main>
         <h1>Gestion de turnos</h1>
-        <header><a href="../index.html">Inicio</a></header>
-        <div class="admin-form-container">
-            <div><label for="">Paciente</label><input type="radio" name="paciente" id="paciente"><label>Médico</label><input type="radio" name="medico" id="medico"></div>
-            <input type="text" placeholder="Paciente">
-
-            <form action="">
-
-            </form>
+        <form id="administrar">
+          <select>
+            <option value="especialidades">Especialidades</option>
+            <option value="listaProfesionales">Profesionales</option>
+            <option value="listaPacientes">Pacientes</option>
+          </select>
+          <button type="submit">Administrar</button>
+        </form>
+        <div id="tablaAdmin"></div>
+        <div class="modal" id="modalAdminEdit">
+          <div class="modal-dialog">
+            
+          </div>
         </div>
     </main>
+
+  <script src="/header.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
+  <script src="../DB.js"></script>
+  <script src="/admin.js"></script>
 </body>
 
 </html>

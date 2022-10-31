@@ -2,23 +2,29 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de turnos</title>
-    <link rel="stylesheet" href="./style.css">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/124b2a5362.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css">
+  <title>Sistema de turnos</title>
 </head>
 
 <body>
-    <main>
-        <h1>Sistema de turnos</h1>
-        <div class="main-botones">
-            <div><a href="./pages/pacientes.html">Turnos para pacientes</a></div>
-            <div><a href="./pages/admin.html">Administrador de turnos</a></div>
-        </div>
-    </main>
-    <script src="./main.js" defer></script>
+  <header></header>
+  <main>
+    <h1>Sistema de turnos</h1>
+    <div class="main-botones">
+      <div><a href="./pages/pacientes.html">Turnos para pacientes</a></div>
+      <div><a href="./pages/admin.html">Administrador de turnos</a></div>
+    </div>
+  </main>
+
+  <script src="./header.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
+  <script src="../DB.js"></script>
+  <script src="../main.js" defer></script>
 </body>
 
 </html>
