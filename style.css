@@ -14,6 +14,11 @@ h1 {
     margin: 3rem;
 }
 
+h1 a{
+  text-decoration: none;
+  color:white;
+}
+
 header nav{
   width: 100%;
   background: crimson;
@@ -118,56 +123,4 @@ th:not(.row-edit){
 .row-edit i:hover{
   background-color: #054103;
   color: white;
-}
-
-.modal{
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left:100px;
-  visibility: hidden;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.modal.is-visible{
-  visibility: visible;
-  opacity: 1;
-}
-
-.modal-dialog {
-  position: relative;
-  width: 700px;
-  height: 80vh;
-  padding: 50px;
-  border-radius: 5px;
-  background: white;
-  cursor: default;
-  display:flex;
-  align-items: flex-end;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.modal-dialog label{
-  padding-right: 2rem;
-  font-size: 2rem;
-  color:black;
-}
-
-.modal-dialog .submit{
-  display: flex;
-  flex-direction: row;
-  padding: 1rem;
-}
-
-.modal-dialog .submit button{
-  width: 250px;
-  margin: 1rem; 
 }

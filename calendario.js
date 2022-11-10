@@ -1,4 +1,3 @@
-
 // tutorial obtenido de https://www.youtube.com/watch?v=tp9UAZrqb9s
 class Calendar {
   constructor(id) {
@@ -25,7 +24,7 @@ class Calendar {
 
   getTemplate() {
     // HTML con encabezado del calendario y contenedor de las fechas
-    let template = `
+    const template = `
     <div class="calendar" id="calendar">
     <div class="calendar__header">
       <button type="button" class="control control--prev">&lt;</button>
@@ -54,17 +53,17 @@ class Calendar {
   }
 
   showCells() {
-    // inserta el HTML de las fechas 
+    // inserta el HTML de las fechas
     this.cells = this.generateDates(this.currentMonth);
     if (this.cells === null) {
-      console.log("Error en generateDates");
+      console.log('Error en generateDates');
       return;
     }
 
     this.elGridBody.innerHTML = '';
     let templateCells = '';
 
-    for (let i = 0; i < this.cells.length; i++) {
+    for (let i = 0; i < this.cells.length; i += 1) {
       let disabledClass = '';
       if (!this.cells[i].isInCurrentMonth) disabledClass = 'grid__cell--disabled';
       templateCells += `
@@ -82,20 +81,24 @@ class Calendar {
     // genera el selector de horarios
     const arrHoras = ['08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
     const arrMinutos = ['00', '30'];
-    let html = `<select><option disabled selected hidden>Elegir horario</option>`;
+    let html = '<select><option disabled selected hidden>Elegir horario</option>';
 
     // filtro solo los ocupados del día seleccionado
     const today = this.selectedDate || this.currentMonth.set({ hours: 0, minutes: 0 });
-    const busyToday = this.busy.filter((f) => {
-      return f.set({ hours: 0, minutes: 0 }).valueOf() == today.valueOf();
-    });
 
+    const busyToday = this.busy.filter((f) => {
+      return f.set({ hours: 0, minutes: 0 }).valueOf() === today.valueOf();
+    });
 
     for (const hora of arrHoras) {
       for (const minuto of arrMinutos) {
         // agregar argumento disabled a los horarios ocupados de hoy
         let disabled = '';
-        if (busyToday.some((f) => f.valueOf() === today.set({ hour: hora, minutes: minuto }).valueOf())) {
+        const isBusyToday = busyToday.some((f) => {
+          return f.valueOf() === today.set({ hour: hora, minutes: minuto }).valueOf();
+        });
+
+        if (isBusyToday) {
           disabled = 'disabled';
         }
         html += `
@@ -103,7 +106,7 @@ class Calendar {
         `;
       }
     }
-    html += `</select><button type="submit" id="submitCalendar">Aceptar</button>`;
+    html += '</select><button type="submit" id="submitCalendar">Aceptar</button>';
     this.selectHours.innerHTML = html;
 
     this.selectHours.addEventListener('change', () => {
@@ -111,8 +114,13 @@ class Calendar {
       const selectHoursValue = this.selectHours.querySelector('select');
       const selectHoursHour = selectHoursValue.value.substring(0, 2);
       const selectHoursMinute = selectHoursValue.value.substring(3);
-      const selectHoursTimestampPrev = this.selectedDate || this.currentMonth.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
-      this.selectHoursTimestamp = selectHoursTimestampPrev.plus({ hours: selectHoursHour, minutes: selectHoursMinute });
+      const selectHoursTimestampPrev = this.selectedDate || this.currentMonth.set({
+        hour: 0, minute: 0, second: 0, millisecond: 0,
+      });
+
+      this.selectHoursTimestamp = selectHoursTimestampPrev.plus({
+        hours: selectHoursHour, minutes: selectHoursMinute,
+      });
     });
 
     this.addEventListenerToSubmit();
@@ -124,7 +132,7 @@ class Calendar {
 
     let dateStart = monthToShow.startOf('month');
     let dateEnd = monthToShow.endOf('month');
-    let cells = [];
+    const cells = [];
 
     while (dateStart.weekday !== 1) {
       dateStart = dateStart.minus({ days: 1 });
@@ -147,10 +155,10 @@ class Calendar {
 
   addEventListenerToControls() {
     // botones para cambiar de mes
-    let elControls = this.elCalendar.querySelectorAll('.control');
-    elControls.forEach(elControl => {
+    const elControls = this.elCalendar.querySelectorAll('.control');
+    elControls.forEach((elControl) => {
       elControl.addEventListener('click', (e) => {
-        let elTarget = e.target;
+        const elTarget = e.target;
         if (elTarget.classList.contains('control--next')) {
           this.changeMonth(true);
         } else {
@@ -172,22 +180,22 @@ class Calendar {
 
   addEventListenerToCells() {
     // conducta al hacer clic en una fecha
-    let elCells = this.elCalendar.querySelectorAll('.grid__cell--gd');
-    elCells.forEach(elCell => {
+    const elCells = this.elCalendar.querySelectorAll('.grid__cell--gd');
+    elCells.forEach((elCell) => {
       elCell.addEventListener('click', (e) => {
-        let elTarget = e.target;
-        if (elTarget.classList.contains('grid__cell--disabled') ||
-          elTarget.classList.contains('grid__cell--selected')) {
+        const elTarget = e.target;
+        if (elTarget.classList.contains('grid__cell--disabled')
+          || elTarget.classList.contains('grid__cell--selected')) {
           return;
         }
-        let selectedCell = this.elGridBody.querySelector('.grid__cell--selected');
+        const selectedCell = this.elGridBody.querySelector('.grid__cell--selected');
         if (selectedCell) {
           selectedCell.classList.remove('grid__cell--selected');
         }
         elTarget.classList.add('grid__cell--selected');
 
-        //seleccionar nueva celda
-        this.selectedDate = this.cells[parseInt(elTarget.dataset.cellId)].date;
+        // seleccionar nueva celda
+        this.selectedDate = this.cells[parseInt(elTarget.dataset.cellId, 10)].date;
         this.showSelector();
         // avisa al listener que hubo un cambio en este objeto
         this.elCalendar.dispatchEvent(new Event('change'));
@@ -217,6 +225,6 @@ class Calendar {
   }
 
   remove() {
-    this.elCalendar.innerHTML = "";
+    this.elCalendar.innerHTML = '';
   }
 }

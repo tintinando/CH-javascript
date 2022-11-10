@@ -47,9 +47,9 @@ class Pacientes {
 function dateReviver(key, value) {
   // If the value is a string and if it roughly looks like it could be a
   // JSON-style date string go ahead and try to parse it as a Date object.
-  let regex = /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?([zZ]|([+-])([01]\d|2[0-3]):?([0-5]\d)?)?/i;
-  if ('string' === typeof value && regex.test(value)) {
-    let date = new DateTime.fromISO(value);
+  const regex = /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?([zZ]|([+-])([01]\d|2[0-3]):?([0-5]\d)?)?/i;
+  if (typeof value === 'string' && regex.test(value)) {
+    const date = new DateTime.fromISO(value);
     // If the date is valid then go ahead and return the date object.
     if (+date === +date) {
       return date;
@@ -91,16 +91,16 @@ let listaTurnos = [];
 const existeDB = localStorage.getItem('helloWorld');
 if (existeDB === null) {
   listaProfesionales = [
-    new Profesionales(120, "Romeo Santos"),
-    new Profesionales(121, "Ramona García"),
+    new Profesionales(120, 'Romeo Santos'),
+    new Profesionales(121, 'Ramona García'),
     new Profesionales(122, 'Edmundo Parra'),
     new Profesionales(123, 'Guadalupe Quispe'),
     new Profesionales(124, 'Ramona Estigarribia'),
   ];
 
   especialidades = [
-    new Especialidades(1, "Clínica"),
-    new Especialidades(2, "Traumatología"),
+    new Especialidades(1, 'Clínica'),
+    new Especialidades(2, 'Traumatología'),
     new Especialidades(3, 'Oftalmología'),
     new Especialidades(4, 'Nutrición'),
   ];

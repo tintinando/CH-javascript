@@ -7,24 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- font awesome -->
   <script src="https://kit.fontawesome.com/124b2a5362.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./style.css">
-  <title>Sistema de turnos</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../calendar.css">
+  <title>Sistema de turnos | Pacientes</title>
 </head>
 
 <body>
   <header></header>
-  <main>
-    <h1>Sistema de turnos</h1>
-    <div class="main-botones">
-      <div><a href="./pages/pacientes.html">Turnos para pacientes</a></div>
-      <div><a href="./pages/admin.html">Administrador de turnos</a></div>
-    </div>
-  </main>
+  <h1><a href='.' title="Recargar página">Turnos para pacientes</a></h1>
+  <form id="formPacientes">
+    <select id="selectPaciente">
+      <option value="selectPacienteDefault" disabled selected hidden>Paciente</option>
+    </select>
+    <button id="verTurnos">Ver Turnos</button>
+    <button id="pedirTurnos">Pedir Turno</button>
+  </form>
+  <form id="formProfesional">
+  </form>
+  
+  <div class="pacientes--turnos" id="pacientes--turnos"></div>
+  <div class="calendar--container" id="calendar--container">
+  </div>
 
-  <script src="./header.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
-  <script src="../DB.js"></script>
-  <script src="../main.js" defer></script>
+  <script src="./DB.js"></script>
+  <script src="./calendario.js"></script>
+  <script src="./pacientes.js"></script>
 </body>
 
 </html>
