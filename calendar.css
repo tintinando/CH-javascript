@@ -1,71 +1,107 @@
-.calendar--container{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.calendar--container {
   width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 2rem;
 }
-.calendar{
+
+.calendar--container select,
+.calendar--container button {
+  width: 250px;
+  margin: 0.5em;
+}
+
+.calendar {
+  margin: 1rem;
   padding: 20px 10px;
   background: rgb(85, 85, 85);
   border-radius: 3px;
-  width: 100%;
+  width: 80%;
   max-width: 1000px;
   font-family: sans-serif;
 }
 
-.calendar__header{
-  color:white;
-  display:flex;
+.calendar__header {
+  color: white;
+  display: flex;
   justify-content: space-between;
   text-transform: uppercase;
   margin-bottom: 30px;
 }
 
-.calendar .control{
+.calendar .control {
   width: unset;
   height: unset;
-  color:white;
+  color: white;
   font-weight: bold;
   background: transparent;
-  border:none;
+  border: none;
   cursor: pointer;
   padding: 0 5px;
 }
 
-.grid__header, .grid__body{
+.grid__header,
+.grid__body {
   display: grid;
-  grid-template-columns: repeat(7,1fr);
+  grid-template-columns: repeat(7, 1fr);
 
 }
-.grid__header{
+
+.grid__header {
   color: white;
   margin-bottom: 20px;
 }
 
-.grid__body{
+.grid__body {
   grid-auto-rows: 70px;
-  color:#e3e3e3;
+  color: #e3e3e3;
 }
 
-.grid__cell{
+.grid__cell {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.grid__cell--gd{
+.grid__cell--gd {
   cursor: pointer;
 }
 
-.grid__cell--selected{
-  color:rgb(85, 85, 85);
+.grid__cell--selected {
+  color: rgb(85, 85, 85);
   background: white;
-  margin: 0 35px;
-  border-radius: 50% ;
   border: 2px solid white;
   box-shadow: 0 0 0 2px rgb(85, 85, 85) inset;
 }
 
-.grid__cell--disabled{
-  color:#888;
+.grid__cell--disabled {
+  color: #888;
   cursor: not-allowed;
+}
+
+@media screen and (max-width: 900px) {
+  .calendar--container {
+    flex-wrap: wrap;
+  }
+
+  .calendar {
+    margin: 1rem;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .calendar--container{
+    padding: 0;
+  }
+
+  .grid__body {
+    grid-auto-rows: 50px;
+  }
 }
