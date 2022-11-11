@@ -7,7 +7,13 @@ let miCal = null;
 
 function crearSelectorPacientes() {
   // carga de elementos el selector pacientes
-  for (const paciente of listaPacientes) {
+  const listaPacientes2 = listaPacientes.sort((a, b) => {
+    if (a.nombreCompleto > b.nombreCompleto) return 1;
+    if (a.nombreCompleto < b.nombreCompleto) return -1;
+    return 0;
+  });
+
+  for (const paciente of listaPacientes2) {
     if (paciente.visible) {
       const option = document.createElement('option');
       option.value = paciente.id;
@@ -104,7 +110,13 @@ function crearSelectorProfesionales() {
   selectEspecialidad.append(optionEsp);
 
   // valores
-  for (const especialidad of especialidades) {
+  const especialidades2 = especialidades.sort((a, b) => {
+    if (a.titulo > b.titulo) return 1;
+    if (a.titulo < b.titulo) return -1;
+    return 0;
+  });
+
+  for (const especialidad of especialidades2) {
     const option = document.createElement('option');
     option.value = especialidad.id;
     option.innerText = especialidad.titulo;
@@ -131,13 +143,19 @@ function crearSelectorProfesionales() {
     });
 
     // busca en la tabla recién filltrada los profesionales
-    const profesionalesSelector = listaProfesionales.filter((x) => {
+    let profesionalesSelector = listaProfesionales.filter((x) => {
       return profesionalesSelectorId.some((y) => {
         return y.idProfesional === x.id;
       });
     });
 
     // carga de elementos al selector Profesionales
+    profesionalesSelector = profesionalesSelector.sort((a, b) => {
+      if (a.nombreCompleto > b.nombreCompleto) return 1;
+      if (a.nombreCompleto < b.nombreCompleto) return -1;
+      return 0;
+    });
+
     for (const profesional of profesionalesSelector) {
       if (profesional.visible) {
         const optionProf = document.createElement('option');

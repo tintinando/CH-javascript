@@ -115,7 +115,7 @@ async function obtenerDB(DB) {
     }));
     allList = allList.map((r) => JSON.parse(r, dateReviver));
 
-    especialidades = allList[0];
+    especialidades = allList[0].sort();
     especialidadProfesionales = allList[1];
     listaPacientes = allList[2];
     listaProfesionales = allList[3];
