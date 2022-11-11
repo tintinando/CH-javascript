@@ -5,20 +5,6 @@ const pacientesTurnos = document.getElementById('pacientes--turnos');
 const formProfesional = document.getElementById('formProfesional');
 let miCal = null;
 
-crearSelectorPacientes();
-
-// lista los turnos con un clic, solo si se eligió paciente
-botonVerTurnos.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (selectPaciente.value !== 'selectPacienteDefault') listarTurnos();
-});
-
-// genera selector de especialidades para pedir turno
-botonPedirTurnos.addEventListener('click', (e) => {
-  e.preventDefault();
-  crearSelectorProfesionales();
-});
-
 function crearSelectorPacientes() {
   // carga de elementos el selector pacientes
   for (const paciente of listaPacientes) {
@@ -36,10 +22,10 @@ function crearSelectorPacientes() {
     formProfesional.innerHTML = '';
   });
 }
-
 function listarTurnos() {
   // muestra en pantalla los turnos del paciente
   const arrTurnos = listaTurnos.filter((id) => id.idPaciente === parseInt(selectPaciente.value, 10));
+
   let registroTurno = '';
 
   for (const turno of arrTurnos) {
@@ -57,7 +43,7 @@ function listarTurnos() {
   }
 
   if (arrTurnos.length === 0) {
-    registroTurno=`
+    registroTurno = `
       <tr>
         <td colspan=2>No se encontraron turnos</td>
       </tr>
@@ -119,12 +105,10 @@ function crearSelectorProfesionales() {
 
   // valores
   for (const especialidad of especialidades) {
-    if (especialidad.visible) {
-      const option = document.createElement('option');
-      option.value = especialidad.id;
-      option.innerText = especialidad.titulo;
-      selectEspecialidad.append(option);
-    }
+    const option = document.createElement('option');
+    option.value = especialidad.id;
+    option.innerText = especialidad.titulo;
+    selectEspecialidad.append(option);
   }
 
   // agrego el selector Especialidad al formulario
@@ -143,7 +127,7 @@ function crearSelectorProfesionales() {
 
     // filtra la tabla de union mostrando solo la especialidad elegida
     const profesionalesSelectorId = especialidadProfesionales.filter((x) => {
-      return x.idEspecialidad === parseInt(selectEspecialidad.value);
+      return x.idEspecialidad === parseInt(selectEspecialidad.value, 10);
     });
 
     // busca en la tabla recién filltrada los profesionales
@@ -193,7 +177,7 @@ function crearSelectorProfesionales() {
           ),
         );
         setTurnosDBLS();
-        const gcal = confirm(`Turno agendado con éxito\n¿Guardar en Google Calendar?`);
+        const gcal = confirm('Turno agendado con éxito\n¿Guardar en Google Calendar?');
         if (gcal) {
           // recupero nombre del profesional
           const miProfesional = listaProfesionales.find((x) => {
@@ -211,3 +195,15 @@ function crearSelectorProfesionales() {
     });
   });
 }
+
+// lista los turnos con un clic, solo si se eligió paciente
+botonVerTurnos.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (selectPaciente.value !== 'selectPacienteDefault') listarTurnos();
+});
+
+// genera selector de especialidades para pedir turno
+botonPedirTurnos.addEventListener('click', (e) => {
+  e.preventDefault();
+  crearSelectorProfesionales();
+});

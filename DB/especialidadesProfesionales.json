@@ -1,0 +1,152 @@
+[
+  {
+    "idEspecialidad": 1,
+    "idProfesional": 106,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 2,
+    "idProfesional": 104,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 3,
+    "idProfesional": 102,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 4,
+    "idProfesional": 116,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 5,
+    "idProfesional": 105,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 6,
+    "idProfesional": 114,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 7,
+    "idProfesional": 101,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 8,
+    "idProfesional": 111,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 9,
+    "idProfesional": 118,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 10,
+    "idProfesional": 109,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 11,
+    "idProfesional": 113,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 12,
+    "idProfesional": 108,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 13,
+    "idProfesional": 115,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 14,
+    "idProfesional": 119,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 15,
+    "idProfesional": 112,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 1,
+    "idProfesional": 110,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 2,
+    "idProfesional": 107,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 3,
+    "idProfesional": 100,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 4,
+    "idProfesional": 103,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 5,
+    "idProfesional": 117,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 6,
+    "idProfesional": 108,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 7,
+    "idProfesional": 102,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 8,
+    "idProfesional": 107,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 9,
+    "idProfesional": 100,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 10,
+    "idProfesional": 101,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 11,
+    "idProfesional": 106,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 12,
+    "idProfesional": 104,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 13,
+    "idProfesional": 105,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 14,
+    "idProfesional": 109,
+    "visible": true
+  },
+  {
+    "idEspecialidad": 15,
+    "idProfesional": 103,
+    "visible": true
+  }
+ ]

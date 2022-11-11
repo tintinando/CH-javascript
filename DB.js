@@ -59,6 +59,13 @@ function dateReviver(key, value) {
   return value;
 }
 
+// globales
+let listaProfesionales = [];
+let especialidades = [];
+let listaPacientes = [];
+let especialidadProfesionales = [];
+let listaTurnos = [];
+
 // guarda DB en LocalStorage
 function setDBLS() {
   localStorage.setItem('listaProfesionales', JSON.stringify(listaProfesionales));
@@ -80,58 +87,44 @@ function getDBLS() {
   especialidadProfesionales = JSON.parse(localStorage.getItem('especialidadProfesionales'));
 }
 
-let listaProfesionales = [];
-let especialidades = [];
-let listaPacientes = [];
-let especialidadProfesionales = [];
-let listaTurnos = [];
+// permite saber si la version de LocalStorage es obsoleta
+const versionDB = 1;
+function existeDBLS() {
+  const versionDBLS = localStorage.getItem('versionDB');
+  if (versionDBLS !== null || versionDBLS >= versionDB) {
+    obtenerDB(false); // usar DBLS
+  } else {
+    localStorage.clear();
+    obtenerDB(true); // crear DB
+  }
+}
+existeDBLS();
 
-// inicializo DB
-// marca que permite saber si se inició LocalStorage antes
-const existeDB = localStorage.getItem('helloWorld');
-if (existeDB === null) {
-  listaProfesionales = [
-    new Profesionales(120, 'Romeo Santos'),
-    new Profesionales(121, 'Ramona García'),
-    new Profesionales(122, 'Edmundo Parra'),
-    new Profesionales(123, 'Guadalupe Quispe'),
-    new Profesionales(124, 'Ramona Estigarribia'),
-  ];
+async function obtenerDB(DB) {
+  if (DB) {
+    const allPromise = await Promise.all([
+      fetch('./DB/especialidades.json'),
+      fetch('./DB/especialidadesProfesionales.json'),
+      fetch('./DB/pacientes.json'),
+      fetch('./DB/profesionales.json'),
+      fetch('./DB/turnos.json'),
+    ]);
+    /// text() en vez de json() para poder usar dateReviver
+    let allList = await Promise.all(allPromise.map((r) => {
+      return r.text();
+    }));
+    allList = allList.map((r) => JSON.parse(r, dateReviver));
 
-  especialidades = [
-    new Especialidades(1, 'Clínica'),
-    new Especialidades(2, 'Traumatología'),
-    new Especialidades(3, 'Oftalmología'),
-    new Especialidades(4, 'Nutrición'),
-  ];
+    especialidades = allList[0];
+    especialidadProfesionales = allList[1];
+    listaPacientes = allList[2];
+    listaProfesionales = allList[3];
+    listaTurnos = allList[4];
+    setDBLS();
+    localStorage.setItem('versionDB', versionDB);
+  } else {
+    getDBLS();
+  }
 
-  especialidadProfesionales = [
-    new EspecialidadesProfesionales(1, 120),
-    new EspecialidadesProfesionales(2, 121),
-    new EspecialidadesProfesionales(3, 122),
-    new EspecialidadesProfesionales(4, 123),
-    new EspecialidadesProfesionales(1, 123),
-    new EspecialidadesProfesionales(1, 122),
-    new EspecialidadesProfesionales(3, 123),
-  ];
-
-  listaPacientes = [
-    new Pacientes(37000000, 'José Benítez', new DateTime.fromISO('2002-10-31')),
-    new Pacientes(30000000, 'Florencia Correa', new DateTime.fromISO('1985-05-14')),
-    new Pacientes(36000007, 'Analía Sandoval', new DateTime.fromISO('1981-08-17')),
-    new Pacientes(14000000, 'Carlos Viale', new DateTime.fromISO('1954-11-20')),
-  ];
-
-  listaTurnos = [
-    new Turnos(37000000, 120, new DateTime.fromISO('2022-11-07T09:00')),
-    new Turnos(36000007, 121, new DateTime.fromISO('2022-11-07T09:30')),
-    new Turnos(30000000, 122, new DateTime.fromISO('2022-11-07T10:00')),
-    new Turnos(14000000, 123, new DateTime.fromISO('2022-11-07T10:30')),
-    new Turnos(36000007, 124, new DateTime.fromISO('2022-11-07T11:00')),
-    new Turnos(30000000, 121, new DateTime.fromISO('2022-11-07T12:30')),
-  ];
-  localStorage.setItem('helloWorld', '');
-  setDBLS();
-} else {
-  getDBLS();
+  crearSelectorPacientes();
 }

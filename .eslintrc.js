@@ -27,5 +27,8 @@ module.exports = {
     especialidades: true,
     especialidadProfesionales: true,
     luxon: true,
+    DateTime: true,
+    setTurnosDBLS: true,
+    Calendar: true,
   },
 };

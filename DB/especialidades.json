@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "titulo": "Clínica"
+  },
+  {
+    "id": 2,
+    "titulo": "Traumatología"
+  },
+  {
+    "id": 3,
+    "titulo": "Oftalmología"
+  },
+  {
+    "id": 4,
+    "titulo": "Otorrinolaringología"
+  },
+  {
+    "id": 5,
+    "titulo": "Obstetricia"
+  },
+  {
+    "id": 6,
+    "titulo": "Pediatría"
+  },
+  {
+    "id": 7,
+    "titulo": "Ginecología"
+  },
+  {
+    "id": 8,
+    "titulo": "Urología"
+  },
+  {
+    "id": 9,
+    "titulo": "Gerontología"
+  },
+  {
+    "id": 10,
+    "titulo": "Psiquiatría"
+  },
+  {
+    "id": 11,
+    "titulo": "Neumonología"
+  },
+  {
+    "id": 12,
+    "titulo": "Endocrinología"
+  },
+  {
+    "id": 13,
+    "titulo": "Cardiología"
+  },
+  {
+    "id": 14,
+    "titulo": "Neurología"
+  },
+  {
+    "id": 15,
+    "titulo": "Gastroenterología"
+  }
+]
